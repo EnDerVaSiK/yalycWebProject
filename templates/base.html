@@ -3,14 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <link rel="stylesheet" type="text/css" href="{{cssFile}}" />
     <title>{{title}}</title>
 </head>
 <body>
-    <div class="container">
-        <!-- Begin page content -->
-        <main role="main" class="container">
-            {% block content %}{% endblock %}
-        </main>
-    </div>
+    <main role="main">
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>
