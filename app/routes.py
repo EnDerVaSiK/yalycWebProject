@@ -1,12 +1,11 @@
-from main import app
 from flask import render_template, url_for, flash, redirect
 from app.forms import LoginForm
 from app.models import User
 from flask_login import current_user, login_user
+from app import app
 
 PARAMETERS = {'title': 'Test'
               }
-
 
 @app.route('/')
 @app.route('/index')

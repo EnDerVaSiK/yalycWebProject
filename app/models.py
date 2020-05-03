@@ -1,5 +1,5 @@
 from app.database import db
-from main import login
+from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
