@@ -38,6 +38,7 @@ deactivate () {
 deactivate nondestructive
 
 VIRTUAL_ENV="D:\Мои документы\Рабочий стол\Python\YaLy 2020\Project WEB\yalycWebProject\venv"
+VIRTUAL_ENV="C:\Users\andre\PycharmProjects\Flask-_LastYaLycProject\yalycWebProject\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

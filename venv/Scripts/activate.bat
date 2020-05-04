@@ -9,6 +9,7 @@ if defined _OLD_CODEPAGE (
 )
 
 set VIRTUAL_ENV=D:\Мои документы\Рабочий стол\Python\YaLy 2020\Project WEB\yalycWebProject\venv
+set VIRTUAL_ENV=C:\Users\andre\PycharmProjects\Flask-_LastYaLycProject\yalycWebProject\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
