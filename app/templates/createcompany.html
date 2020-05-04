@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-color-white">Create company</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p class="text-color-white">
+            {{ form.companyName.label }}<br>
+            {{ form.companyName(size=24) }}<br>
+            {% for error in form.companyName.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p class="text-color-white">
+            {{ form.logoCompany.label }}<br>
+            {{ form.logoCompany }}<br>
+            {% for error in form.logoCompany.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p class="text-color-white">
+            {{ form.tagLine.label }}<br>
+            {{ form.tagLine }}<br>
+            {% for error in form.tagLine.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p class="text-color-white">
+            {{ form.foreword.label }}<br>
+            {{ form.foreword(size=32) }}<br>
+            {% for error in form.foreword.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p class="text-color-white">
+            {{ form.aboutUs.label }}<br>
+            {{ form.aboutUs(size=32) }}<br>
+            {% for error in form.aboutUs.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+                <p class="text-color-white">
+            {{ form.workWithUs.label }}<br>
+            {{ form.workWithUs(size=32) }}<br>
+            {% for error in form.workWithUs.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p class="text-color-white">
+            {{ form.firstGameName.label }}<br>
+            {{ form.firstGameName(size=32) }}<br>
+        </p>
+        <p class="text-color-white">
+            {{ form.firstGamePicture.label }}<br>
+            {{ form.firstGamePicture }}<br>
+        </p>
+        <p class="text-color-white">
+            {{ form.secondGameName.label }}<br>
+            {{ form.secondGameName(size=32) }}<br>
+        </p>
+        <p class="text-color-white">
+            {{ form.secondGamePicture.label }}<br>
+            {{ form.secondGamePicture }}<br>
+        </p>
+                <p class="text-color-white">
+            {{ form.thirdGameName.label }}<br>
+            {{ form.thirdGameName(size=32) }}<br>
+        </p>
+        <p class="text-color-white">
+            {{ form.thirdGamePicture.label }}<br>
+            {{ form.thirdGamePicture }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

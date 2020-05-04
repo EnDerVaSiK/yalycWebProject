@@ -1,14 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-{# TODO   КАСТЫЛИИИИ)))    надо класс нормальный сделать чтобы по красоте#}
-    <div class="">
-        <a href="company/corp1">Corp1</a>
-        <a href="company/corp2">Corp2</a>
-        <a href="company/corp3">Corp3</a>
-        <a href="company/corp4">Corp4</a>
-        <a href="company/corp5">Corp5</a>
-        <a href="company/corp6">Corp6</a>
-    </div>
-    <h1 class="text-color-white">ALL is OK</h1>
+    <h1 class="text-color-white">Главная страница. Ниже показаны все компании на нашем сайте.</h1>
+    {% for company in range(5) %}
+            <h3 class="text-color-white">тут ничего нет</h3>
+    {% endfor %}
 {% endblock %}

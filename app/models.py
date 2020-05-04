@@ -23,3 +23,13 @@ class User(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+
+class Company(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    companyName = db.Column(db.String(64), index=True, unique=True)
+    logoCompany = db.Column(db.LargeBinary)
+    tagLine = db.Column(db.String(64))
+    foreword = db.Column(db.String(256))
+    aboutUs = db.Column(db.String(256))
+    workWithUs = db.Column(db.String(256))
