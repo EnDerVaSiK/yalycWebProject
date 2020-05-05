@@ -14,7 +14,8 @@ PARAMETERS = {'title': 'Test'
 @app.route('/index')
 def index():
     companies = [c for c in Company.query.all()]
-    return render_template('index.html', **PARAMETERS, companies=companies)
+    PARAMETERS['companies'] = companies
+    return render_template('index.html', **PARAMETERS)
 
 
 @app.route('/company/<companyId>')
