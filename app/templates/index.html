@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 class="text-color-white">Главная страница. Ниже показаны все компании на нашем сайте.</h1>
-    {% for company in range(5) %}
-            <h3 class="text-color-white">тут ничего нет</h3>
+    {% for company in companies %}
+            <h3 class="text-color-white">{{ company.companyName }}</h3>
     {% endfor %}
 {% endblock %}
