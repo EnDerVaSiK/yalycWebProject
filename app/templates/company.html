@@ -3,75 +3,68 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css' )}}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css' )}}" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>{{title}}</title>
     </head>
-    <body data-spy="scroll" data-target="#section-topbar" data-offest="250" class="style1">
-        <div id="section-topbar">
-            <div id="topbar-inner">
-                <div class="container">
-                    <a href={{ url_for("index") }}>Back to site</a>
-                    <div id="logocontainer">
-                        <img src="{{logoPic}}" alt="Logo of company" width="128px">
-                        <div class="clear"></div>
-                        <a href="#section-manifesto">{{companyName}}</a>
-                    </div>
-                    <div class="clear"></div>
-                    <div id="navcontainer">
-                        <div>
-                            <ul id="nav" class="nav">
-                                <li class="menu-item">
-                                    <a href="#section-games">Games</a>
-                                </li>
-                                <li>
-                                    <a href="#section-about">About us</a>
-                                </li>
-                                <li>
-                                    <a href="#section-work">Work with us</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+    <body data-spy="scroll" data-target="#section-topbar" data-offset="220" class="style1">
+        <nav class="navbar navbar-expand-lg navbar-dark" id="section-topbar">
+            <a class="navbar-brand ml-5"><img src="{{ logoPic }}" width="200px"></a>
+            <div class="navbar-collapse">
+                <div class="navbar-nav m-auto">
+                    <a class="nav-link text-white" href="#section-manifesto">Главная</span></a>
+                    <a class="nav-link text-white" href="#section-about">О нас</a>
+                    <a class="nav-link text-white" href="#section-games">Игры</a>
+                    <a class="nav-link text-white" href="#section-work">Работа с нами</a>
                 </div>
             </div>
-        </div>
+            <a class="nav-link text-white mr-5" href={{ url_for("index") }}>Вернуться на главную</a>
+        </nav>
         <div id="section-manifesto">
-            <div class="container">
-                <div>
-                    <h1>{{ tagLine }}</h1>
-                </div>
-                <br/>
-                <div>
-                    <h3>{{ foreword }}</h3>
-                </div>
+            <div class="section">
+            <h1>{{ tagLine }}</h1>
+            <br/>
+            <h3>{{ foreword }}</h3>
             </div>
         </div>
         <div id="section-about">
-            <div class="container">
-                <div>
+            <div class="section">
+                    <h1>О нас</h1>
+                    <br/>
                     <h3>{{ aboutUs }}</h3>
-                </div>
             </div>
         </div>
         <div id="section-games">
-            <div class="container">
-                <div>
-                    <div class="col col-left">
+            <div class="section">
+                <h1 class="display-3">Наши игры</h1>
+            </br>
+                <div class="row border-bottom">
+                    <div class="col">
                         <img src="{{logoPic}}" alt="First game" width="300">
                     </div>
-                    <div class="col">
-                        <h2 class="text-color-white">
-                            HisturyHisturyHistur yHisturyHisturyHisturyHisturyHist uryHisturyHisturyHisturyHisturyHistu ryHisturyHistury
+                    <div class="col my-auto">
+                        <h2>
+                            Игра 1 - очень классная, рекомендую, сам делал.
                         </h2>
+                    </div>
+                </div>
+            </br>
+                <div class="row">
+                    <div class="col my-auto">
+                        <h2>
+                            Игра 2 - как первая, ток цифра другая.
+                        </h2>
+                    </div>
+                    <div class="col">
+                        <img src="{{logoPic}}" alt="First game" width="300">
                     </div>
                 </div>
             </div>
             <div class="clear"></div>
         </div>
         <div id="section-work">
-            <div class="container">
-                <h5 class="text-color-white">{{ workWithUs }}</h5>
+            <div class="section">
+                <h5>{{ workWithUs }}</h5>
             </div>
         </div>
     </body>
