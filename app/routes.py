@@ -6,23 +6,25 @@ from flask_login import current_user, login_user, logout_user
 from app import app
 from .database import db
 
-PARAMETERS = {'title': 'Test'
-              }
+WEBSITETITLE = 'YalycWebProject by Andrey and Rus'
+PARAMETERS = {}
 
 
 @app.route('/')
 @app.route('/index')
 def index():
     companies = [c for c in Company.query.all()]
+    PARAMETERS['title'] = WEBSITETITLE
     PARAMETERS['companies'] = companies
+    PARAMETERS['logoPic'] = url_for("static", filename="images/no-logo.png")
     return render_template('index.html', **PARAMETERS)
 
 
 @app.route('/company/<companyId>')
 def company(companyId):
     company = Company.query.filter_by(id=companyId).first()
-    PARAMETERS['title'] = f"{company.companyName} - on Test"
-    PARAMETERS['logoPic'] = url_for("static", filename="images/test_logo.png")
+    PARAMETERS['title'] = f"{company.companyName} - on {WEBSITETITLE}"
+    PARAMETERS['logoPic'] = url_for("static", filename="images/no-logo.png")
     PARAMETERS['companyName'] = company.companyName
     PARAMETERS['tagLine'] = company.tagLine
     PARAMETERS['foreword'] = company.foreword
@@ -46,6 +48,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
+    PARAMETERS['title'] = WEBSITETITLE
     PARAMETERS['form'] = form
     return render_template('login.html', **PARAMETERS)
 
@@ -68,6 +71,7 @@ def register():
         db.session.commit()
         flash('Поздравляю, вы зарегистрированы!')
         return redirect(url_for('login'))
+    PARAMETERS['title'] = WEBSITETITLE
     PARAMETERS['form'] = form
     return render_template('register.html', **PARAMETERS)
 
@@ -87,5 +91,6 @@ def createcompany():
         db.session.add(company)
         db.session.commit()
         flash('Поздравляю ваша компания создана!')
+    PARAMETERS['title'] = WEBSITETITLE
     PARAMETERS['form'] = form
     return render_template('createcompany.html', **PARAMETERS)
