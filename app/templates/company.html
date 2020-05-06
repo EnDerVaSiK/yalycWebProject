@@ -22,50 +22,48 @@
         </nav>
         <div id="section-manifesto">
             <div class="section">
-            <h1>{{ tagLine }}</h1>
+            <h1>{{ company.tagLine }}</h1>
             <br/>
-            <h3>{{ foreword }}</h3>
+            <h3>{{ company.foreword }}</h3>
             </div>
         </div>
         <div id="section-about">
             <div class="section">
                     <h1>О нас</h1>
                     <br/>
-                    <h3>{{ aboutUs }}</h3>
+                    <h3>{{ company.aboutUs }}</h3>
             </div>
         </div>
+        {% if games|length > 0 %}
         <div id="section-games">
             <div class="section">
                 <h1 class="display-3">Наши игры</h1>
             </br>
-                <div class="row border-bottom">
-                    <div class="col">
-                        <img src="{{logoPic}}" alt="First game" width="300">
-                    </div>
-                    <div class="col my-auto">
-                        <h2>
-                            Игра 1 - очень классная, рекомендую, сам делал.
-                        </h2>
-                    </div>
-                </div>
-            </br>
+            {% for game in games %}
                 <div class="row">
+                    <div class="col">
+                        <img src="{{logoPic}}" width="300">
+                    </div>
                     <div class="col my-auto">
                         <h2>
-                            Игра 2 - как первая, ток цифра другая.
+                            {{ game.name }}
                         </h2>
-                    </div>
-                    <div class="col">
-                        <img src="{{logoPic}}" alt="First game" width="300">
+                        <p>{{ game.describe }}</p>
                     </div>
                 </div>
+            {% endfor %}
             </div>
-            <div class="clear"></div>
         </div>
+        {% endif %}
         <div id="section-work">
             <div class="section">
-                <h5>{{ workWithUs }}</h5>
+                <h5>{{ company.workWithUs }}</h5>
             </div>
         </div>
+        <footer class="page-footer font-small blue">
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright. Основатель компании - <bold>{{ user.username }}</bold>
+            </div>
+          </footer>
     </body>
 </html>

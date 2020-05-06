@@ -9,6 +9,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    companies = db.relationship("Company", backref='user', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -33,3 +34,13 @@ class Company(db.Model):
     foreword = db.Column(db.String(256))
     aboutUs = db.Column(db.String(256))
     workWithUs = db.Column(db.String(256))
+    userId = db.Column(db.Integer, db.ForeignKey('user.id'))
+    games = db.relationship("Game", backref='company', lazy='dynamic')
+
+
+class Game(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    picture = db.Column(db.LargeBinary)
+    describe = db.Column(db.String(256))
+    companyId = db.Column(db.Integer, db.ForeignKey('company.id'))

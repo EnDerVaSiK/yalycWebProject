@@ -40,10 +40,13 @@ class CreateCompanyForm(FlaskForm):
     workWithUs = TextAreaField('Секция "Работа с нами"', validators=[DataRequired()])
     firstGameName = StringField('Название для первой игры')
     firstGamePicture = FileField('Картинка для первой игры', validators=[FileAllowed(['jpg', 'png', 'bmp' 'jpeg'])])
+    firstGameDescribe = StringField('Описание для первой игры')
     secondGameName = StringField('Название для второй игры')
     secondGamePicture = FileField('Картинка для второй игры', validators=[FileAllowed(['jpg', 'png', 'bmp' 'jpeg'])])
+    secondGameDescribe = StringField('Описание для первой игры')
     thirdGameName = StringField('Название для третьей игры')
     thirdGamePicture = FileField('Картинка для третьей игры', validators=[FileAllowed(['jpg', 'png', 'bmp' 'jpeg'])])
+    thirdGameDescribe = StringField('Описание для первой игры')
     submit = SubmitField('Создать компанию')
 
     def validate_companyName(self, companyName):

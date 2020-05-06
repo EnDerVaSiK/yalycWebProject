@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from app.forms import LoginForm, RegistrationForm, CreateCompanyForm
-from app.models import User, Company
+from app.models import User, Company, Game
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user
 from app import app
@@ -13,7 +13,7 @@ PARAMETERS = {}
 @app.route('/')
 @app.route('/index')
 def index():
-    companies = [c for c in Company.query.all()]
+    companies = Company.query.all()
     PARAMETERS['title'] = WEBSITETITLE
     PARAMETERS['companies'] = companies
     PARAMETERS['logoPic'] = url_for("static", filename="images/no-logo.png")
@@ -23,13 +23,13 @@ def index():
 @app.route('/company/<companyId>')
 def company(companyId):
     company = Company.query.filter_by(id=companyId).first()
+    games = Game.query.filter_by(companyId=companyId).all()
+    user = User.query.filter_by(id=company.userId).first()
     PARAMETERS['title'] = f"{company.companyName} - on {WEBSITETITLE}"
     PARAMETERS['logoPic'] = url_for("static", filename="images/no-logo.png")
-    PARAMETERS['companyName'] = company.companyName
-    PARAMETERS['tagLine'] = company.tagLine
-    PARAMETERS['foreword'] = company.foreword
-    PARAMETERS['workWithUs'] = company.workWithUs
-    PARAMETERS['aboutUs'] = company.aboutUs
+    PARAMETERS['company'] = company
+    PARAMETERS['games'] = games
+    PARAMETERS['user'] = user
     return render_template('company.html', **PARAMETERS)
 
 
@@ -86,11 +86,30 @@ def createcompany():
                           tagLine=form.tagLine.data,
                           foreword=form.foreword.data,
                           aboutUs=form.aboutUs.data,
-                          workWithUs=form.workWithUs.data
+                          workWithUs=form.workWithUs.data,
+                          userId=current_user.id
                           )
         db.session.add(company)
         db.session.commit()
+        company = Company.query.filter_by(companyName=company.companyName, workWithUs=company.workWithUs).one()
+        if form.firstGameName.data != "" and form.firstGameName.data is not None:
+            new_game = Game(name=form.firstGameName.data,
+                            describe=form.firstGameDescribe.data,
+                            companyId=company.id)
+            db.session.add(new_game)
+        if form.secondGameName.data != "" and form.secondGameName.data is not None:
+            new_game = Game(name=form.secondGameName.data,
+                            describe=form.secondGameDescribe.data,
+                            companyId=company.id)
+            db.session.add(new_game)
+        if form.thirdGameName.data != "" and form.secondGameName.data is not None:
+            new_game = Game(name=form.thirdGameName.data,
+                            describe=form.thirdGameDescribe.data,
+                            companyId=company.id)
+            db.session.add(new_game)
+        db.session.commit()
         flash('Поздравляю ваша компания создана!')
+        return redirect(url_for('index'))
     PARAMETERS['title'] = WEBSITETITLE
     PARAMETERS['form'] = form
     return render_template('createcompany.html', **PARAMETERS)
