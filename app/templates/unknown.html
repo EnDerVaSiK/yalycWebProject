@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}hz{% endblock %}
+{% block body %}
+    <h1>Unknown page</h1>
+    <p>Sometimes we don't know what was happened. Don't worry. We're already looking into it.
+    <p>Now it's:</p>
+    <h5 class="nav-text text-black">{{ error_name }}</h5>
+    <p><a href="{{ url_for('index') }}">OK, now you go home page</a>
+{% endblock %}
