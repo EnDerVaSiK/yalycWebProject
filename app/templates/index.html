@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-white my-4">Главная страница. Ниже показаны все компании на нашем сайте.</h1>
+    {% for company in companies %}
+    <!-- Project One -->
+    <div class="row border border-danger py-5 mx-5 mt-3">
+        <div class="col-md-7">
+          <a href="company/{{ company.id }}">
+            <img class="img-fluid rounded mb-3 mb-md-0" style="height: 250px" src="{{ logoPic }}" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3 class="text-white">{{ company.companyName }}</h3>
+          <p class="text-white lead">{{ company.foreword }}</p>
+          <a class="btn btn-primary" href="company/{{ company.id }}">Перейти на сайт компании</a>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+{% endblock %}

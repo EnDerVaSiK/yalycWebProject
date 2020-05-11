@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style1.css' )}}" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>{{title}}</title>
+    </head>
+    <body data-spy="scroll" data-target="#section-topbar" data-offset="220" class="style1">
+        <nav class="navbar navbar-expand-lg navbar-dark" id="section-topbar">
+            <a class="navbar-brand ml-5"><img src="{{ logoPic }}" width="200px"></a>
+            <div class="navbar-collapse">
+                <div class="navbar-nav m-auto">
+                    <a class="nav-link text-white" href="#section-manifesto">Главная</span></a>
+                    <a class="nav-link text-white" href="#section-about">О нас</a>
+                    <a class="nav-link text-white" href="#section-games">Игры</a>
+                    <a class="nav-link text-white" href="#section-work">Работа с нами</a>
+                </div>
+            </div>
+            <a class="nav-link text-white mr-5" href={{ url_for("index") }}>Вернуться на главную</a>
+        </nav>
+        <div id="section-manifesto">
+            <div class="section">
+            <h1>{{ company.tagLine }}</h1>
+            <br/>
+            <h3>{{ company.foreword }}</h3>
+            </div>
+        </div>
+        <div id="section-about">
+            <div class="section">
+                    <h1>О нас</h1>
+                    <br/>
+                    <h3>{{ company.aboutUs }}</h3>
+            </div>
+        </div>
+        {% if games|length > 0 %}
+        <div id="section-games">
+            <div class="section">
+                <h1 class="display-3">Наши игры</h1>
+            </br>
+            {% for game in games %}
+                <div class="row">
+                    <div class="col">
+                        <img src="{{logoPic}}" width="300">
+                    </div>
+                    <div class="col my-auto">
+                        <h2>
+                            {{ game.name }}
+                        </h2>
+                        <p>{{ game.describe }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        <div id="section-work">
+            <div class="section">
+                <h5>{{ company.workWithUs }}</h5>
+            </div>
+        </div>
+        <footer class="page-footer font-small blue">
+            <div class="footer-copyright text-center py-3">
+                © 2020 Copyright. Основатель компании - <bold>{{ user.username }}</bold>
+            </div>
+          </footer>
+    </body>
+</html>
